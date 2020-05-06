@@ -141,7 +141,7 @@ select {
 /* media queries which will only be activated at specific screen sizes */
 @media (max-width: 800px) {
   #table-area td {
-    font-size: 1em;
+    font-size: 1em !important;
   }
 }
 
@@ -184,6 +184,10 @@ select {
     font-weight: bold;
     text-align: center;
     content: attr(data-th);
+  }
+
+  #table-area tr {
+    overflow: auto;
   }
 
   .hero h1 {

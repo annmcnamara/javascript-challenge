@@ -1,38 +1,14 @@
-// for (var i in data) 
-// {
-//    console.log("row " + i);
-//    for (var j in data[i]) 
-//      {
-//       console.log(" " + data[i][j]);
-//      }
-// }
-
-
-// data.forEach((row)=>{
-//     console.log(row);
-//     // Object.entries(row).forEach(([key, value])=>{
-//     //     console.log(`${key} ${value}`)
-//     // });
-// });
-
-
 function createTable(tableData) {
     // var table     = document.createElement('table');
     // var tableBody = document.createElement('tbody');
 
-    var table = document.querySelector("table-area");
+    var table       = document.querySelector("table");
     var tableBody = document.querySelector("tbody");
 
     //table.style.border = '2px solid black'
   
     tableData.forEach(function(rowData) {
       var row = document.createElement('tr');
-  
-    //   rowData.forEach(function(cellData) {
-    //     var cell = document.createElement('td');
-    //     cell.appendChild(document.createTextNode(cellData));
-    //     row.appendChild(cell);
-    //   });
 
       Object.entries(rowData).forEach(([key, value])=>{
         var cell = document.createElement('td');
@@ -70,6 +46,7 @@ function createTable(tableData) {
   
 //createTable(data);
 createTable(data);
+
 function selectDate(sighting) {
     var x = document.getElementById("datetime")
     //console.log(`${x.value} compared to ${sighting.datetime}`);
@@ -82,16 +59,19 @@ function printTable(results){
     });
 }
 
-// document.getElementById("dateInput").addEventListener("change", function() {
-//     var input = this.value;
-//     var dateEntered = new Date(input);
-//     console.log(input); //e.g. 2015-11-13
-//     console.log(dateEntered); //e.g. Fri Nov 13 2015 00:00:00 GMT+0000 (GMT Standard Time)
-// });
-
 function onClick (){
     var results = data.filter(selectDate);
-    //clearTable();
+
+    var tableBody = document.querySelector("tbody");
+    tableBody.innerHTML = "";
+
     createTable(results)
     console.log(results)
+}
+
+function loadAll (){
+    var tableBody = document.querySelector("tbody");
+    tableBody.innerHTML = "";
+    
+    createTable(data)
 }
