@@ -75,6 +75,7 @@ select {
 
 #table-area th {
   text-align: center;
+  
 }
 
 #table-area th:first-child,
@@ -153,7 +154,7 @@ select {
   #table-area tr td:first-child {
     font-size: 1.8em;
     font-weight: bold;
-    background: #1b3146;
+    background: #2e1b46;
   }
 
   #table-area tr td:last-child {
@@ -171,11 +172,12 @@ select {
 
   #table-area td {
     font-size: 1.25em;
+    width: 25%;
   }
 
   #table-area tbody td {
     display: block;
-    text-align: center;
+    text-align: left;
   }
 
   #table-area tbody td::before {
@@ -187,7 +189,7 @@ select {
   }
 
   #table-area tr {
-    overflow: auto;
+    width: 100px;
   }
 
   .hero h1 {

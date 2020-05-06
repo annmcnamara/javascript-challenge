@@ -1,8 +1,8 @@
 function createTable(tableData) {
     // var table     = document.createElement('table');
     // var tableBody = document.createElement('tbody');
-
-    var table       = document.querySelector("table");
+    var table = document.getElementById("ufo-table")
+    //var table       = document.querySelector("table");
     var tableBody = document.querySelector("tbody");
 
     //table.style.border = '2px solid black'

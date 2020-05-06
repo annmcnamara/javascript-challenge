@@ -1,50 +1,39 @@
+function cleanUpValue(key, value){
+    if(key === "comments"){
+        value = value.replace(/[\&\#443933]/g," ");
+        //value = value.replace(/[\&\#33]/g," ");
+        //value = value.replace(/[\&\#39]/g," ");
+    }
+
+    if(key==='state' || key === 'country'){
+        value = value.toUpperCase();
+    }
+
+    if(key=='city' || key=='shape'){
+        value = value.charAt(0).toUpperCase() + value.slice(1);
+    }
+
+    return value;
+}
+
 function createTable(tableData) {
-    // var table     = document.createElement('table');
-    // var tableBody = document.createElement('tbody');
-    var table = document.getElementById("ufo-table")
-    //var table       = document.querySelector("table");
-    var tableBody = document.querySelector("tbody");
 
-    //table.style.border = '2px solid black'
-  
-    tableData.forEach(function(rowData) {
-      var row = document.createElement('tr');
+    var tbody = d3.select("tbody");
 
-      Object.entries(rowData).forEach(([key, value])=>{
-        var cell = document.createElement('td');
-        if(key === "datetime"){ console.log(typeof value); }
-        if(key === "comments"){
-            value = value.replace(/\&\#/g,"");
-            value = value.replace(/44/g," ");
-            value = value.replace(/33/g," ");
-            value = value.replace(/39/g, " ")
+    console.log(tbody);
 
-        }
+    tableData.forEach((rows)=>{
+        //console.log(rows);
+        var row = tbody.append("tr");
+        Object.entries(rows).forEach(([key, value])=>{
+            //console.log(`${key}: ${value}`)
+            value = cleanUpValue(key, value);
 
-        if(key==='state'){
-            value = value.toUpperCase();
-        }
-
-        if(key==='country'){
-            value = value.toUpperCase();
-        }
-
-        if(key=='city'){
-            value = value.charAt(0).toUpperCase() + value.slice(1);
-        }
-        // theValue = value.replace('a', 'b');
-        cell.appendChild(document.createTextNode(value));
-        row.appendChild(cell);
-      });
-  
-      tableBody.appendChild(row);
+            row.append("td").text(value);
+        });
     });
+}
   
-    table.appendChild(tableBody);
-    document.body.appendChild(table);
-  }
-  
-//createTable(data);
 createTable(data);
 
 function selectDate(sighting) {
@@ -59,19 +48,31 @@ function printTable(results){
     });
 }
 
-function onClick (){
-    var results = data.filter(selectDate);
-
-    var tableBody = document.querySelector("tbody");
-    tableBody.innerHTML = "";
-
-    createTable(results)
-    console.log(results)
-}
-
 function loadAll (){
-    var tableBody = document.querySelector("tbody");
-    tableBody.innerHTML = "";
-    
     createTable(data)
 }
+
+var loadAllButton = d3.select("#loadall-btn");
+loadAllButton.on("click", function(){
+    var tbody = d3.select("tbody");
+
+    tbody.selectAll('tr').remove();
+
+    console.log(`LOAD ALL TBODY ${tbody}`);
+
+    createTable(data);
+    //console.log(data)
+});
+
+var button = d3.select("#filter-btn");
+button.on("click", function (){
+    var results = data.filter(selectDate);
+    var tbody = d3.select("tbody");
+
+    var rowstodel = tbody.selectAll('tr').remove();
+
+    console.log(`FILTER TBODY ${tbody}`);
+
+    createTable(results)
+    //console.log(results)
+});
