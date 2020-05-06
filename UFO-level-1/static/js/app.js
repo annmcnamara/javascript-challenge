@@ -37,8 +37,10 @@ function createTable(tableData) {
 createTable(data);
 
 function selectDate(sighting) {
-    var x = document.getElementById("datetime")
-    //console.log(`${x.value} compared to ${sighting.datetime}`);
+    var x = document.getElementById("datetime");
+    //var x = d3.select("#datetime");
+    //var x = d3.select("#datetime")
+    console.log(`${x.value} compared to ${sighting.datetime}`);
     return(x.value == sighting.datetime)
 }
 
@@ -65,11 +67,15 @@ loadAllButton.on("click", function(){
 });
 
 var button = d3.select("#filter-btn");
+
 button.on("click", function (){
+    console.log(`BUTTON`);    
+    console.log(d3.event.target.id)
+
     var results = data.filter(selectDate);
     var tbody = d3.select("tbody");
 
-    var rowstodel = tbody.selectAll('tr').remove();
+    tbody.selectAll('tr').remove();
 
     console.log(`FILTER TBODY ${tbody}`);
 
