@@ -1,3 +1,6 @@
+var text = d3.selectAll("#text");
+//var text = d3.selectAll("#form-control>name")
+
 function cleanUpValue(key, value){
     if(key === "comments"){
         value = value.replace(/[\&\#443933]/g," ");
@@ -34,14 +37,23 @@ function createTable(tableData) {
     });
 }
   
-createTable(data);
+//createTable(data);
 
-function selectDate(sighting) {
-    var x = document.getElementById("datetime");
-    //var x = d3.select("#datetime");
-    //var x = d3.select("#datetime")
-    console.log(`${x.value} compared to ${sighting.datetime}`);
-    return(x.value == sighting.datetime)
+function filterTable(sighting) {
+    //var x = document.getElementByName("datetime");
+    var inputElement = d3.select("#text");
+    var inputElement = d3.selectAll(".form-control")
+
+    // Get the value property of the input element
+    console.log(inputElement.keys)
+    var inputValue = inputElement.property("value");
+    var inputName  = inputElement.property("name");
+
+    console.log(inputValue);
+    console.log(inputName);
+    //console.log(`${inputValue} compared to ${sighting.datetime}`);
+
+    return(inputValue === sighting.datetime)
 }
 
 function printTable(results){
@@ -60,7 +72,7 @@ loadAllButton.on("click", function(){
 
     tbody.selectAll('tr').remove();
 
-    console.log(`LOAD ALL TBODY ${tbody}`);
+    //console.log(`LOAD ALL TBODY ${tbody}`);
 
     createTable(data);
     //console.log(data)
@@ -69,16 +81,30 @@ loadAllButton.on("click", function(){
 var button = d3.select("#filter-btn");
 
 button.on("click", function (){
-    console.log(`BUTTON`);    
-    console.log(d3.event.target.id)
+    var results = data.filter(filterTable);
 
-    var results = data.filter(selectDate);
     var tbody = d3.select("tbody");
-
     tbody.selectAll('tr').remove();
-
-    console.log(`FILTER TBODY ${tbody}`);
 
     createTable(results)
     //console.log(results)
 });
+
+function handleChange(event){
+    var filterValue = d3.event.target.value;
+    var filterField = d3.event.target.name;
+    
+    console.log(filterValue);
+
+    console.log(filterField)
+
+    // var inputElement = d3.selectAll(".form-control")
+
+
+    // var inputName  = inputElement.property("name");
+
+    // console.log(inputName);
+
+}
+
+text.on("change", handleChange);
