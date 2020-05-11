@@ -66,6 +66,7 @@ function reloadTable(){
             console.log(`${d.name} has value ${d.value} `)
             //results=data;
 
+            // IS THERE A TRICK HERE?  I am so confused :-)
             filteredData = filteredData.filter(function filterData(i) {
 
                 var targets = [];
