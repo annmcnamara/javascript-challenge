@@ -64,15 +64,21 @@ function reloadTable(){
     d3.selectAll("#text").nodes().forEach(function(d, i){
         if (d.value !=``) {
             console.log(`${d.name} has value ${d.value} `)
-            results=data;
+            //results=data;
+
             filteredData = filteredData.filter(function filterData(i) {
 
                 var targets = [];
                 var searchValues = [];
                 d3.selectAll("#text").nodes().forEach(function(d){
-                    if (d.value !=``) { targets.push(d.name); searchValues.push(d.value); }
+                    if (d.value !=``) { 
+                        targets.push(d.name); 
+                        searchValues.push(d.value); 
+
+                    }
+                    
                 });
-                // console.log(searchValues);
+                console.log(targets);
                 // console.log(i.datetime + " " + searchValues.includes(i.datetime) + " " + d.value);
                 // console.log(i.city + " " + searchValues.includes(i.city) + " " + d.value);
 
@@ -99,8 +105,8 @@ function reloadTable(){
             if(filteredData.length == 0){
                 console.log("No Results");
                 d3.select("#message").text(`No Results were found matching`);
-                reloadTable;
-                filteredData = data;
+                //filteredData = data;
+                //reloadTable;
             }
                 
             console.log(filteredData);
@@ -108,8 +114,7 @@ function reloadTable(){
         else {
             //labels.selectAll("#text").on("change", reloadTable1);
             //filteredData = data;
-            
-            console.log(`${d.name} is empty`)
+            console.log(`${d.name} is empty`);
             reloadTable;
         }
     });
