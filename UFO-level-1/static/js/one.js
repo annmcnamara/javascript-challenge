@@ -65,24 +65,20 @@ function reloadTable(){
         if (d.value !=``) {
             console.log(`${d.name} has value ${d.value} `)
             results=data;
-            filteredData = filteredData.filter(function filterData(i) {
+            var filterData = results.filter(function filterData(i) {
 
                 var targets = [];
                 var searchValues = [];
-                d3.selectAll("#text").nodes().forEach(function(d){
+                d3.selectAll("#text").nodes().forEach(function(d, i){
                     if (d.value !=``) { targets.push(d.name); searchValues.push(d.value); }
                 });
-                // console.log(searchValues);
-                // console.log(i.datetime + " " + searchValues.includes(i.datetime) + " " + d.value);
-                // console.log(i.city + " " + searchValues.includes(i.city) + " " + d.value);
+                console.log(searchValues);
+                console.log(i.datetime + " " + searchValues.includes(data.datetime) + " " + d.value);
 
-                // console.log(searchValues.includes(i.datetime));
-                // console.log(searchValues.includes(i.city));
+                console.log(searchValues.includes(i.datetime));
 
-                if(d.name === "datetime") {return(searchValues.includes(i.datetime));} 
-                if(d.name === "city") {return(searchValues.includes(i.city));} 
-                if(d.name === "state") {return(searchValues.includes(i.state));} 
-                if(d.name === "country") {return(searchValues.includes(i.country));} 
+                return(searchValues.includes(i.datetime));
+
                 // var filtered = data.filter(function(d, i){ 
                 //     //console.log("d.city", d.city + " " + searchValues.includes(d.city, d.datetime, d.state, d.country));                    
                 //     //return (searchValues.includes(d.datetime, d.city, d.state, d.country))
@@ -90,27 +86,15 @@ function reloadTable(){
                 //     return (searchValues.includes(d.datetime));
                 // });
 
-                console.log(`TARGET ${targets}`)
+
                 // return filtered;
             });
-
-            createTable(filteredData);
-            
-            if(filteredData.length == 0){
-                console.log("No Results");
-                d3.select("#message").text(`No Results were found matching`);
-                reloadTable;
-                filteredData = data;
-            }
-                
-            console.log(filteredData);
+            results = filterData;
+            createTable(results);
         }
         else {
             //labels.selectAll("#text").on("change", reloadTable1);
-            //filteredData = data;
-            
             console.log(`${d.name} is empty`)
-            reloadTable;
         }
     });
 }
