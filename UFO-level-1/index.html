@@ -39,13 +39,13 @@
                     <ul class="list-group" id="filters">     
                       <li class="filter list-group-item">
                         <label for="date">Enter a Date</label>
-                        <input class="form-control" id="text" type="text" name="datetime" placeholder="1/11/2011" value = "1/1/2010">
+                        <input class="form-control" id="text" type="text" name="datetime" placeholder="1/11/2011">
                       </li>
                       <li class="filter list-group-item">
                         <label for="city">Enter a City</label>
                         <input class="form-control" id="text" type="text" name="city" placeholder="Benton">
                       <li class="filter list-group-item">
-                        <label for="country">Enter a State</label>
+                        <label for="state">Enter a State</label>
                         <input class="form-control" id="text" type="text" name="state" placeholder="CA">
                       </li>
                       <li class="filter list-group-item">
@@ -54,8 +54,9 @@
                       </li>
                     </ul>
                   </div>
-                  <button id="filter-btn"  type="button" class="btn btn-default" >Filter Table</button>
-                  <button id="loadall-btn" type="button" class="btn btn-default" >Load Table</button>
+                  <button id="filter-btn"  type="button" class="btn btn-default" name="filter">Filter Table</button>
+                  <button id="clear-btn"   type="button" class="btn btn-default" name="clear">Clear Search</button>
+                  <button id="loadall-btn" type="button" class="btn btn-default" name="load">Load Table</button>
 
                   
                   <p id="selected-dropdown"></p>
@@ -65,6 +66,7 @@
           </aside>
         </div>
         <div class="col-md-10">
+          <div id = "message"><p> </p> </div>
           <div id="table-area" class="">
             <table id="ufo-table" class="table table-striped">
               <thead>
@@ -90,7 +92,8 @@
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
   <script src="static/js/data.js"></script>
-  <script src="static/js/app.js"></script>
+  <script src="static/js/monday.js"></script> 
+
 </body>
 
 </html>

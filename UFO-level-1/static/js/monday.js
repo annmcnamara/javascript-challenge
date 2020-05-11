@@ -59,6 +59,7 @@ function createTable(tableData) {
 
 createTable(data);
 
+
 function reloadTable(){
 
     //console.log(this)
@@ -117,6 +118,8 @@ function reloadTable1(){
     }
 }
 
+
+
 init();
 
 var labels = d3.selectAll("#filters").on("change", reloadTable);
@@ -125,15 +128,20 @@ reloadTable();
 var button = d3.select("#filter-btn").on("click", reloadTable);
 var clearButton = d3.select("#clear-btn").on("click", clearSearch);
 
-var loadAllButton = d3.select("#loadall-btn");
 
+
+var loadAllButton = d3.select("#loadall-btn");
 loadAllButton.on("click", function(){
     var tbody = d3.select("tbody");
+
     tbody.selectAll('tr').remove();
     d3.select("#message").text(``);
     init();
     //console.log(data)
 });
+
+
+//console.log(labels.select("#text1").property("value"));
   
 
 
