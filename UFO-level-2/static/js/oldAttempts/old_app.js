@@ -75,3 +75,4 @@ function loadAll (){
     
     createTable(data)
 }
+
