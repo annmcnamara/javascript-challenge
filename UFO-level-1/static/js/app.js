@@ -39,10 +39,6 @@ function createTable(tableData) {
 
     tbody.selectAll('tr').remove();
 
-    //var tbody = d3.select("tbody");
-
-    console.log(tbody);
-
     tableData.forEach((rows)=>{
         //console.log(rows);
         var row = tbody.append("tr");
@@ -54,167 +50,89 @@ function createTable(tableData) {
         });
     });
 
-    console.log(tableData);
+    //console.log(tableData);
 }
 
-createTable(data);
-
+filteredData = data;
+results = data;
+filtered = data;
 function reloadTable(){
-    //console.log(this)
-    d3.selectAll("#text").nodes().forEach(function(d, i){
-        if (d.value !=``) {
-            console.log(`${d.name} has value ${d.value} `)
-            //results=data;
 
-            // IS THERE A TRICK HERE?  I am so confused :-)
-            filteredData = filteredData.filter(function filterData(i) {
+    // FILTER 
+    results = results.filter(function filterData(i) {
+        //console.log(i);
+        var filters = labels.selectAll("#text");
 
-                var targets = [];
-                var searchValues = [];
-                d3.selectAll("#text").nodes().forEach(function(d){
-                    if (d.value !=``) { 
-                        targets.push(d.name); 
-                        searchValues.push(d.value); 
+        // console.log(filters.nodes()[0].value);
 
-                    }
+        var applyFilters = []
+        arr = filters.nodes()
+        applyFilters = filters.nodes().map(x => {if(x.value!=="") {return x.value;}});
+        console.log(applyFilters)
+        //console.log(applyFilters.length);  should be 4 
+        for(var j = 0; j < applyFilters.length; j++){
+                //if(applyFilters[j]) console.log(arr[j].name + " apply " + applyFilters[j] + " " +  i.datetime);
+                if (applyFilters[j] && "datetime" === arr[j].name) { 
+                    filterDate = i.datetime === arr[j].value;
+
+                    filtered = filtered.filter( function (d) {
+                        filterDate = d.datetime === arr[j].value;
+                        console.log(arr[j].value + " filter to " + d.datetime + " " + filterDate);
+                        return(d.datetime === arr[j].value);});
+                    //console.log(` ${filterDate} ${i.datetime} ${arr[j].value} `);
+                    console.log(filtered);    
+                }
+
+                if (applyFilters[j] && "city" === arr[j].name) {
+                     filterCity = i.city === arr[j].value;
+
+                     filtered = filtered.filter( function (d) {
+                        filterCity = d.city === arr[j].value;
+                        console.log(arr[j].value + " filter to " + d.city + " " + filterCity);
+                        return(d.city === arr[j].value.toLowerCase());});
+                    //console.log(` ${filterDate} ${i.datetime} ${arr[j].value} `);
+                    console.log(filtered);   
                     
-                });
-                console.log(targets);
-                // console.log(i.datetime + " " + searchValues.includes(i.datetime) + " " + d.value);
-                // console.log(i.city + " " + searchValues.includes(i.city) + " " + d.value);
+                }
 
-                // console.log(searchValues.includes(i.datetime));
-                // console.log(searchValues.includes(i.city));
+                if (applyFilters[j] && "state" === arr[j].name) {
+                    filterState = i.state === arr[j].value;
+                    //console.log(` ${filterCity} ${i.city} ${arr[j].value} `);
+                    filtered = filtered.filter( function (d) {
+                        filterState = d.state === arr[j].value;
+                        console.log(arr[j].value + " filter to " + d.state + " " + filterState);
+                        return(d.state === arr[j].value.toLowerCase());});
+                    //console.log(` ${filterDate} ${i.datetime} ${arr[j].value} `);
+                    console.log(filtered);  
+                }
 
-                if(d.name === "datetime") {return(searchValues.includes(i.datetime));} 
-                if(d.name === "city") {return(searchValues.includes(i.city));} 
-                if(d.name === "state") {return(searchValues.includes(i.state));} 
-                if(d.name === "country") {return(searchValues.includes(i.country));} 
-                // var filtered = data.filter(function(d, i){ 
-                //     //console.log("d.city", d.city + " " + searchValues.includes(d.city, d.datetime, d.state, d.country));                    
-                //     //return (searchValues.includes(d.datetime, d.city, d.state, d.country))
-                //     console.log(searchValues.includes(d.datetime));
-                //     return (searchValues.includes(d.datetime));
-                // });
+                if (applyFilters[j] && "country" === arr[j].name) {
+                    filterCountry = i.country === arr[j].value;
+                    filtered = filtered.filter( function (d) {
+                        filterCountry = d.country === arr[j].value;
+                        console.log(arr[j].value + " filter to " + d.country + " " + filterCountry);
+                        return(d.country === arr[j].value.toLowerCase());});
+                    //console.log(` ${filterDate} ${i.datetime} ${arr[j].value} `);
+                    console.log(filtered);
+                }
 
-                console.log(`TARGET ${targets}`)
-                // return filtered;
-            });
-
-            createTable(filteredData);
-            
-            if(filteredData.length == 0){
-                console.log("No Results");
-                d3.select("#message").text(`No Results were found matching`);
-                //filteredData = data;
-                //reloadTable;
-            }
-                
-            console.log(filteredData);
-        }
-        else {
-            //labels.selectAll("#text").on("change", reloadTable1);
-            //filteredData = data;
-            console.log(`${d.name} is empty`);
-            reloadTable;
-        }
-    });
-}
-function reloadTable1(){
-    target = this.value;
-    column = this.name;
-    d3.select("#message").text(``);
-
-    console.log (`THIS ${this.name}  : ${this.value}`)
-    //console.log (`VAR ${column}  : ${target}`)
-    filterData = results.filter(function filterData(i) {
-        var count = 0;
-
-        var targets = [];
-        var searchValues = [];
-
-        d3.selectAll("#text").nodes().forEach(function(d, i){
-            if (d.value !=``) { targets.push(d.name); searchValues.push(d.value); }
-
-        });
-        console.log(searchValues);
-
-        var filtered = data;
-        if (targets.includes("datetime"))
-        {
-           return i.datetime === searchValues[0];
+        } //end for
+        //console.log("FILTERED: " + filtered);
+        createTable(filtered);
+        return (filtered);
         
-        }
 
-        if (targets.includes("city"))
-        {
-            console.log(i.city + " - " + searchValues[1]);
-           return i.city === searchValues[1];
-
-        }
-
-        if (targets.includes(["datetime", "city"]))
-        {
-            console.log("TREU")
-            return ((i.datetime === searchValues[0]) && (i.city === searchValues[1]));
-        
-        }
-
-        if (targets.includes("city"))
-        {
-           return i.city === searchValues[1];
-
-        }
-
-        // switch(column){
-        //     case "datetime":
-        //           console.log(`${target} compared to ${i.datetime}`);
-        //           filtered = (target === i.datetime);
-        //           break;
-        //     case "city":
-        //           target = target.toLowerCase();
-        //           console.log(`${target} compared to ${i.city}`);
-        //           filtered = (target === i.city)
-        //           break;
-        //     case "state":
-        //             target = target.toLowerCase();
-        //             console.log(`${target} compared to ${i.state}`);
-        //             filtered = (target === i.state)
-        //             break;
-        //     case "country":
-        //             target = target.toLowerCase();
-        //             console.log(`${target} compared to ${i.country}`);
-        //             filtered = (target === i.country)
-        //             break;
-        //     default:
-        //             //should never reach here
-        //             console.log(`${i}: ${target}`);
-        // }
-
-        // return filtered;
     });
 
-    console.log(filterData);
+    filtered = data;
 
-    if(filterData.length === 0){
-        //need to check if other boxes are empty
-        //and they are then need to filter on them.
-        //this.value = "";
-        //console.log ("this " + this.value);
-        console.log("No Results");
-        //d3.select("#message").text(`No Results were found matching the ${column} to ${target}`);
-        reloadTable();
-    }else{
-        results = filterData;
-        createTable(results);
-        console.log(results);
-    }
+
 }
 
 init();
 
+
 var labels = d3.selectAll("#filters").on("change", reloadTable);
-reloadTable();
 
 var button = d3.select("#filter-btn").on("click", reloadTable);
 var clearButton = d3.select("#clear-btn").on("click", clearSearch);
