@@ -4,7 +4,7 @@
 
  `ALIENS-R-REAL` have collected all of the eye-witness reports to could to prove extra-terrestial activity! This exercise puts this information online for the world to see and then the matter will finally be put to rest.
 
-This code that creates a table dynamically based upon a [dataset](/static/js/data.js). 
+This code that creates a table dynamically based upon a [dataset](/UFO-level-1/static/js/data.js). 
 
 Users can also filter the table data for specific values. The project uses pure JavaScript, HTML, and CSS, and D3.js 
 
@@ -50,4 +50,4 @@ Users can also filter the table data for specific values. The project uses pure 
 - - -
 
 ### Copyright
-Ann McNAmara © 2020. All Rights Reserved.
+Ann McNamara © 2020. All Rights Reserved.
