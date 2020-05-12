@@ -55,6 +55,12 @@ Users can also filter the table data for specific values. The project uses pure 
 #### Date Filter
 ![DateSearch Load](/images/dateSearch.png)
 ### LEVEL 2 Screenshots
+#### Initial Load
+![Initial Load](/images/initialLoad.png)
+
+#### Date Filter
+![DateSearch Load](/images/dateSearch.png)
+
 #### Date and City Filter
 ![DateCity Load](/images/dateCitySearch.png)
 
@@ -65,7 +71,7 @@ Users can also filter the table data for specific values. The project uses pure 
 ![cityStates Load](/images/cityState.png)
 
 
-#### Additional Features
+### Additional Features
 #### Clear Search (clears all search fields, reloads table)
 ![clear Load](/images/clearSearch.png)
 

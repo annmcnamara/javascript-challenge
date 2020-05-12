@@ -55,7 +55,7 @@ function createTable(tableData) {
 
 filtered = data;
 function reloadTable(){
-
+    d3.event.preventDefault();  //
     // FILTER 
     results = results.filter(function filterData(i) {
         //console.log(i);

@@ -117,7 +117,10 @@ select {
 
 .hero h1 {
   margin-top: 200px;
-  font-size: 0.1rem;
+  font-size: 0.2rem;
+  color: white;
+  font-weight: 500px;
+  font-style: italic;
   animation: title 1.2s forwards linear;
 }
 
