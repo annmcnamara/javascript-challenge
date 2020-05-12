@@ -1,4 +1,5 @@
 # JavaScript Homework - JavaScript and DOM Manipulation
+![Welcome The Truth is out There!](/images/banner.png)
 
 ## Background
 
@@ -49,18 +50,21 @@ Users can also filter the table data for specific values. The project uses pure 
 
 ### LEVEL 1 Screenshots
 #### Initial Load
-![GitHub Logo](/images/initialLoad.png)
+![Initial Load](/images/initialLoad.png)
 
 #### Date Filter
-
+![DateSearch Load](/images/dateSearch.png)
 ### LEVEL 2 Screenshots
 #### Date and City Filter
+![DateCity Load](/images/dateCitySearch.png)
 
 #### Date and State Filter
+![DateState Load](/images/dateStateSearch.png)
 
 #### City and State Filter
+![cityStates Load](/images/cityState.png)
 
-#### More images can be found [here](/images/)
+#### More screenshots can be found [here](/images/)
 
 - - -
 
