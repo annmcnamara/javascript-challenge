@@ -3,7 +3,7 @@
 
 ## Background
 
- `ALIENS-R-REAL` have collected all of the eye-witness reports to could to prove extra-terrestial activity! This exercise puts this information online for the world to see and then the matter will finally be put to rest.
+`ALIENS-R-REAL` have collected all of the eye-witness reports to could to prove extra-terrestial activity! This exercise puts this information online for the world to see and then the matter will finally be put to rest.
 
 This code that creates a table dynamically based upon a [dataset](/UFO-level-1/static/js/data.js). 
 
@@ -63,6 +63,17 @@ Users can also filter the table data for specific values. The project uses pure 
 
 #### City and State Filter
 ![cityStates Load](/images/cityState.png)
+
+
+#### Additional Features
+#### Clear Search (clears all search fields, reloads table)
+![clear Load](/images/clearSearch.png)
+
+#### Filter Search (same as pressing enter)
+![filter Load](/images/emptySearchFilter.png)
+
+#### Load Table (reloads all rows)
+![load Load](/images/loadTable.png)
 
 #### More screenshots can be found [here](/images/)
 
