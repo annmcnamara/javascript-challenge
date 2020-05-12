@@ -1,10 +1,9 @@
 results = data;
-filteredData = data;
+
 function init(){
     createTable(data);
     results = data;
 }
-
 
 function cleanUpValue(key, value){
     if(key === "comments"){
@@ -53,8 +52,6 @@ function createTable(tableData) {
     //console.log(tableData);
 }
 
-filteredData = data;
-results = data;
 filtered = data;
 function reloadTable(){
 
@@ -65,11 +62,13 @@ function reloadTable(){
 
         // console.log(filters.nodes()[0].value);
 
-        var applyFilters = []
-        arr = filters.nodes()
+        var applyFilters = [];  //create and array to hold the filters
+        arr = filters.nodes()   //create an array to hold the filter nodes (so can access name and value)
+        //map true/false depending on if there is a value to filter. 
         applyFilters = filters.nodes().map(x => {if(x.value!=="") {return x.value;}});
-        console.log(applyFilters)
+        //console.log(applyFilters)
         //console.log(applyFilters.length);  should be 4 
+        // loop through applyFilters and apply the values. 
         for(var j = 0; j < applyFilters.length; j++){
                 //if(applyFilters[j]) console.log(arr[j].name + " apply " + applyFilters[j] + " " +  i.datetime);
                 if (applyFilters[j] && "datetime" === arr[j].name) { 
@@ -77,7 +76,7 @@ function reloadTable(){
 
                     filtered = filtered.filter( function (d) {
                         filterDate = d.datetime === arr[j].value;
-                        console.log(arr[j].value + " filter to " + d.datetime + " " + filterDate);
+                        //console.log(arr[j].value + " filter to " + d.datetime + " " + filterDate);
                         return(d.datetime === arr[j].value);});
                     //console.log(` ${filterDate} ${i.datetime} ${arr[j].value} `);
                     console.log(filtered);    
@@ -88,7 +87,7 @@ function reloadTable(){
 
                      filtered = filtered.filter( function (d) {
                         filterCity = d.city === arr[j].value;
-                        console.log(arr[j].value + " filter to " + d.city + " " + filterCity);
+                        //console.log(arr[j].value + " filter to " + d.city + " " + filterCity);
                         return(d.city === arr[j].value.toLowerCase());});
                     //console.log(` ${filterDate} ${i.datetime} ${arr[j].value} `);
                     console.log(filtered);   
@@ -100,7 +99,7 @@ function reloadTable(){
                     //console.log(` ${filterCity} ${i.city} ${arr[j].value} `);
                     filtered = filtered.filter( function (d) {
                         filterState = d.state === arr[j].value;
-                        console.log(arr[j].value + " filter to " + d.state + " " + filterState);
+                        //console.log(arr[j].value + " filter to " + d.state + " " + filterState);
                         return(d.state === arr[j].value.toLowerCase());});
                     //console.log(` ${filterDate} ${i.datetime} ${arr[j].value} `);
                     console.log(filtered);  
@@ -110,7 +109,7 @@ function reloadTable(){
                     filterCountry = i.country === arr[j].value;
                     filtered = filtered.filter( function (d) {
                         filterCountry = d.country === arr[j].value;
-                        console.log(arr[j].value + " filter to " + d.country + " " + filterCountry);
+                        //console.log(arr[j].value + " filter to " + d.country + " " + filterCountry);
                         return(d.country === arr[j].value.toLowerCase());});
                     //console.log(` ${filterDate} ${i.datetime} ${arr[j].value} `);
                     console.log(filtered);
@@ -118,25 +117,19 @@ function reloadTable(){
 
         } //end for
         //console.log("FILTERED: " + filtered);
-        createTable(filtered);
+        createTable(filtered);  //reload the table with results
         return (filtered);
-        
-
-    });
-
+    });  //end filter
+    //reset the data
     filtered = data;
-
-
 }
-
+//load data and set up table
 init();
 
-
-var labels = d3.selectAll("#filters").on("change", reloadTable);
-
-var button = d3.select("#filter-btn").on("click", reloadTable);
-var clearButton = d3.select("#clear-btn").on("click", clearSearch);
-
+//set up events
+var labels        = d3.selectAll("#filters").on("change", reloadTable);
+var button        = d3.select("#filter-btn").on("click", reloadTable);
+var clearButton   = d3.select("#clear-btn").on("click", clearSearch);
 var loadAllButton = d3.select("#loadall-btn");
 
 loadAllButton.on("click", function(){
@@ -146,6 +139,3 @@ loadAllButton.on("click", function(){
     init();
     //console.log(data)
 });
-  
-
-
