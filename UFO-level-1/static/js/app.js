@@ -1,9 +1,7 @@
 // Assign the data from `data.js` to a descriptive variable
 var ufoSightings = data;
 
-var labels = d3.select(".form-control").on("change", runEnter);
-var labels = d3.select(".form-control").on("change", runEnter);
-var labels = d3.select("#form").on("change", runEnter);
+var labels = d3.select("#form").on("submit", runEnter);
 
 d3.select("#filter-btn").on("click", runEnter);
 
@@ -51,6 +49,7 @@ function createTable(tableData) {
 function runEnter(){
     // Prevent the page from refreshing
     d3.event.preventDefault();
+    //labels.event.preventDefault();
     d3.event.stopPropagation();
     if(d3.event.keyCode === 32 || d3.event.keyCode === 13){
         console.log("Congrats, you pressed enter or space!");
