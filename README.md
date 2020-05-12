@@ -41,11 +41,26 @@ Users can also filter the table data for specific values. The project uses pure 
 
 ### Dataset
 
-* [UFO Sightings Data](/static/js/data.js)
+* [UFO Sightings Data](/UFO-level-1/static/js/data.js)
 
 - - -
 
-**Enjoy!**
+**Sample Screenshots are included below**
+
+### LEVEL 1 Screenshots
+#### Initial Load
+![GitHub Logo](/images/initialLoad.png)
+
+#### Date Filter
+
+### LEVEL 2 Screenshots
+#### Date and City Filter
+
+#### Date and State Filter
+
+#### City and State Filter
+
+#### More images can be found [here](/images/)
 
 - - -
 

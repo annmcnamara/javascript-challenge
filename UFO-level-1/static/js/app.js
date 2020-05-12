@@ -8,6 +8,7 @@ function init(){
 function cleanUpValue(key, value){
     if(key === "comments"){
         value = value.replace(/[\&\#443933]/g," ");
+        value = value.replace(/quot\;/g," ");
         //value = value.replace(/[\&\#33]/g," ");
         //value = value.replace(/[\&\#39]/g," ");
     }
