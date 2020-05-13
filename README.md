@@ -17,7 +17,9 @@ Users can also filter the table data for specific values. The project uses pure 
 
 2.  **html** files are in these folders as well as the static folder containing your javascript. This is the main script to run for analysis.
 
-
+3. Both web pages are available through these links 
+* [https://annmcnamara.github.io/ufo_1.html](https://annmcnamara.github.io/ufo_1.html) 
+* [https://annmcnamara.github.io/ufo_2.html](https://annmcnamara.github.io/ufo_2.html) 
 ### Level 1: Automatic Table and Date Search (Required)
 
 * **UFO-level-1** contains a basic HTML web page was built, and is saved at [index.html](/UFO-level-1/index.html) 
