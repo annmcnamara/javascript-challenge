@@ -1,8 +1,10 @@
+//give the data a more meaningful name
 results = data;
 
+//set up the table 
 function init(){
-    createTable(data);
-    results = data;
+    createTable(results);  //call the create table function
+    results = data;        //reset results. 
 }
 
 function cleanUpValue(key, value){
