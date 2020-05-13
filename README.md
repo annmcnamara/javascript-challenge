@@ -15,7 +15,7 @@ Users can also filter the table data for specific values. The project uses pure 
 
 1. Two folders to correspond to the challenges: **UFO-level-1** and **UFO-level-2**.
 
-2.  **html** files are in these folders as well as the static folder containing your javascript. This is the main script to run for analysis.
+2.  **html** files are in these folders as well as the static folder containing the javascript. This is the main script to run for analysis.
 
 3. Both web pages are available through these links 
 * [https://annmcnamara.github.io/ufo_1.html](https://annmcnamara.github.io/ufo_1.html) 
