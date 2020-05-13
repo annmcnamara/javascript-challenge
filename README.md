@@ -51,11 +51,14 @@ Users can also filter the table data for specific values. The project uses pure 
 **Sample Screenshots are included below**
 
 ### LEVEL 1 Screenshots
+
+#### NOTE: I decided to use the functionality that if there was no matching data found that the entire table is reloaded
+#### This could be improved but for the purposes of this project I felt it was an adequate approach. 
 #### Initial Load
-![Initial Load](/images/initialLoad.png)
+![Initial Load](/images/initialLoad1.png)
 
 #### Date Filter
-![DateSearch Load](/images/dateSearch.png)
+![DateSearch Load](/images/dateSearch1.png)
 ### LEVEL 2 Screenshots
 #### Initial Load
 ![Initial Load](/images/initialLoad.png)

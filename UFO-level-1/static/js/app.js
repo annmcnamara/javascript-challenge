@@ -51,14 +51,7 @@ function runEnter(){
     d3.event.preventDefault();
     //labels.event.preventDefault();
     d3.event.stopPropagation();
-    if(d3.event.keyCode === 32 || d3.event.keyCode === 13){
-        console.log("Congrats, you pressed enter or space!");
-        
-        d3.event.preventDefault();
-        d3.event.stopPropagation();
 
-        //runEnter();
-    }
     // Select the input element and get the raw HTML node
     var filter = d3.select("#datetime");
 
@@ -78,9 +71,13 @@ function runEnter(){
 
     //create the table
     createTable(filteredData);
-    d3.event.preventDefault();
+    if (filteredData.length === 0){
+        createTable(ufoSightings);
+    }
 
 }
+
+createTable(ufoSightings);
 
 
 
